@@ -1,35 +1,40 @@
 # AWS Secure VPC Bastion Host Project
 
-##  Overview
-secure AWS network architecture using Amazon VPC with public and private subnets.  
-bastion host is used as a secure entry point to access a private EC2 instance.
 
+# for English scroll down
+
+
+##  Overview
 AWS არქიტექტურა Amazon VPC-ს გამოყენებით საჯარო და დახურული საბნეტებისთვის. 
 Bastion host გამოყენება როგორც უსაფრთხო შესასვლელი private EC2 instance-ზე
 
+secure AWS network architecture using Amazon VPC with public and private subnets.  
+bastion host is used as a secure entry point to access a private EC2 instance.
 ---
 
 
-##  Architecture Design
+
+##  Architecture
 მოიცავს შემდეგს:
-
-custom VPC (secure-vpc)
+include:
+custom VPC 
 public subnet (Bastion Host)
-private subnet (Application Server)
-internet gateway (IGW)
-route tables for public and private subnets
-security Groups for controlled access
-
+private subnet (application server)
+IGW
+route tables (public & private subnets)
+security Groups 
 ---
 
-##  Security 
-უსაფრთხოების / SG გამოყენება
+##  Security Groups
+private EC2 instance-ს არ აქვს პირდაპირი წვდომა ინტერნეტთან,
+გარე ქსელიდან შესვლის ერთადერთი წერტილი არის bastion,
+SSH წვდომა private subnetებზე დაშვებულია მხოლოდ bastion-დან,
+SG ზღუდავს ტრაფიკს,
 
 private EC2 instance has no direct public access
 bastion host is the only entry point from the internet
 SSH access to private subnet is allowed only from Bastion
 security groups restrict unnecessary traffic
-
 ---
 
 
@@ -41,22 +46,14 @@ Amazon EC2
 security groups
 internet gateway
 route tables
-SSH (Secure Shell)
+SSH 
 
 ---
 
-##  Connectivity 
-დაკავშირების პრინციპი
-
-1. user connects to Bastion Host via SSH
-2. bastion Host connects to Private EC2 instance
-3. private instance is not directly accessible from the internet
-
----
 
 
 ## Screenshots
-სცრინები
+სქრინები
 
 ### VPC
 ![VPC](screenshots/VPC.png)
